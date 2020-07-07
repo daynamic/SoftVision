@@ -14,11 +14,6 @@ abstract class SafeApiRequest {
         val response = call.invoke()
 
         if (response.isSuccessful) {
-            /*if(response.body()=="200")
-                authListener?.onSuccessAPi(response.body()?.data!!)
-            else
-                authListener?.onFailure(response.body()?.message!!)*/
-
             return response.body()!!
         } else {
             val error = response.errorBody()?.string()

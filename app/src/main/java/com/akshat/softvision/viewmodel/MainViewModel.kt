@@ -24,6 +24,7 @@ class MainViewModel : ViewModel() {
             try {
                 val authResponse = Repo().getService()
                 if (authResponse.title != null) {
+                    //Getting Values from Response and assigning to _heading and _providedData
                     _heading.value = authResponse.title
                     _providedData.value = authResponse.rows
                     return@main

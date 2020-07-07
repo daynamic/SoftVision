@@ -21,10 +21,15 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        //Factory implementation
         factory = MainViewModelFactory()
+        //assigning ViewModel
         viewModel = ViewModelProvider(this, factory).get(MainViewModel::class.java)
+        //Showing Progressbar
         progress_bar.visibility = View.VISIBLE
+        //hiding the content
         itemsswipetorefresh.visibility = View.GONE
+        //Network call via viewmodel
         viewModel.getServices()
 
         //** Set the colors of the Pull To Refresh View
@@ -41,13 +46,16 @@ class MainActivity : AppCompatActivity() {
             itemsswipetorefresh.isRefreshing = false
         }
 
+        //Observing LiveData and Injecting the data in ListView
         viewModel.providedData.observe(this, Observer { providedData ->
             progress_bar.visibility = View.GONE
             itemsswipetorefresh.visibility = View.VISIBLE
             recycler_view.also {
+                //Setting title text obtained from the network Call
                 supportActionBar?.title = viewModel.heading.value.toString()
                 it.layoutManager = LinearLayoutManager(this)
                 it.setHasFixedSize(true)
+                //Injecting Values in Adapter
                 it.adapter = ListsAdapter(providedData)
             }
         }

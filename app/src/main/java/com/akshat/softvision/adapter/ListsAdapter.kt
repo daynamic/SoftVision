@@ -10,7 +10,6 @@ import com.akshat.softvision.model.Row
 class ListsAdapter(
     private val reportsAvailable : List<Row>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
-    private val DATA_VIEW_TYPE = 1
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return  PostsViewHolder.create(parent)

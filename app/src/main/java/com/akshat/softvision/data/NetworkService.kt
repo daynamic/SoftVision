@@ -2,17 +2,16 @@ package com.akshat.softvision.data
 
 import com.akshat.softvision.BuildConfig
 import com.akshat.softvision.model.Response
-import io.reactivex.Single
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
-import retrofit2.http.Query
 
 /**
  * Created by Akshat on 22/06/20.
+ * NetworkService Interface to fire Retrofit call.
  */
 interface NetworkService {
 

@@ -8,21 +8,22 @@ import com.akshat.softvision.R
 import com.akshat.softvision.model.Row
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.list_item.view.*
-import kotlinx.android.synthetic.main.list_items.view.*
-import kotlinx.android.synthetic.main.list_items.view.img_banner
-import kotlinx.android.synthetic.main.list_items.view.txt_name
+
 
 /**
  * Created by Akshat on 23/06/20.
  */
 class PostsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
     fun bind(responseItem: Row) {
-        if (responseItem != null) {
-            itemView.txt_name.text = responseItem.title
-            itemView.txt_description.text = responseItem.description
-            if (!responseItem.imageHref.isNullOrEmpty())
-                Picasso.get().load(responseItem.imageHref).into(itemView.img_banner)
-        }
+        //Setting text from Response
+        itemView.txt_name.text = responseItem.title
+        //Setting Description from Response
+        itemView.txt_description.text = responseItem.description
+        //Setting Image from Response
+        if (!responseItem.imageHref.isNullOrEmpty())
+            Picasso.get().load(responseItem.imageHref).into(itemView.img_banner)
+        else
+            itemView.img_banner.setImageResource(R.drawable.ic_launcher_background)
     }
 
     companion object {
